@@ -250,7 +250,7 @@ class MinesweeperAI():
             if cll not in self.moves_made:
                 self.moves_made.add(cll)
                 return cll
-        return self.make_random_move()
+        return None
         raise NotImplementedError
 
     def make_random_move(self):
@@ -261,7 +261,7 @@ class MinesweeperAI():
             2) are not known to be mines
         """
         while True:
-            cll = (random.randint(0, self.height), random.randint(0, self.width))
+            cll = (random.randint(0, self.height - 1), random.randint(0, self.width - 1))
             if cll not in self.moves_made:
                 if cll not in self.mines:
                     return cll
@@ -292,9 +292,16 @@ class MinesweeperAI():
             2) adds them to the safes set()
         """
         for cll in sentence.known_safes():
+            # print(f"sentence: {sentence}")
             self.mark_safe(cll)
             self.safes.add(cll)
-            # print(f"{cll} is safe")   
+            # print(f"{cll} is safe")
+            if len(sentence.cells) > 1:
+                copy = set(sentence.cells)
+                copy.remove(cll)
+                new_sent = Sentence(copy, sentence.count) 
+                if new_sent not in self.knowledge:            
+                    self.knowledge.append(new_sent) 
 
     def add_mines(self, sentence):
         """
@@ -302,7 +309,13 @@ class MinesweeperAI():
             1) marks them as mine
             2) adds them to the mines set()
         """
-        for cll in sentence.known_safes():
+        for cll in sentence.known_mines():
             self.mark_mine(cll)
             self.mines.add(cll)
-            # print(f"{cll} is mine")   
+            # print(f"{cll} is mine")
+            if len(sentence.cells) > 1:
+                copy = set(sentence.cells)
+                copy.remove(cll)
+                new_sent = Sentence(copy, sentence.count - 1) 
+                if new_sent not in self.knowledge:            
+                    self.knowledge.append(new_sent)         
