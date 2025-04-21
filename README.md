@@ -5,7 +5,7 @@ notes on Harvard CS50's Introduction to Artificial Intelligence with Python
 
 0. [Search](https://github.com/goksuko/CS50_AI/blob/main/00_Search/Search.ipynb)
 1. [Knowledge](https://github.com/goksuko/CS50_AI/blob/main/01_Knowledge/Knowledge.ipynb)
-2. Uncertainty
+2. [Uncertainty](https://github.com/goksuko/CS50_AI/blob/main/02_Uncertainty/Uncertainty.ipynb)
 3. Optimization
 4. Learning
 5. Neural Networks
