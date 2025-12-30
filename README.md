@@ -3,10 +3,10 @@ notes on Harvard CS50's Introduction to Artificial Intelligence with Python
 
 ### CS50AI 2024
 
-0. [Search](https://github.com/goksuko/CS50_AI/blob/main/00_Search/L0/Search.ipynb)
-1. [Knowledge](https://github.com/goksuko/CS50_AI/blob/main/01_Knowledge/L1/Knowledge.ipynb)
-2. [Uncertainty](https://github.com/goksuko/CS50_AI/blob/main/02_Uncertainty/L2/Uncertainty.ipynb)
-3. Optimization
+0. [Search](https://cs50.harvard.edu/ai/notes/0/)
+1. [Knowledge](https://cs50.harvard.edu/ai/notes/1/)
+2. [Uncertainty](https://cs50.harvard.edu/ai/notes/2/)
+3. [Optimization](https://cs50.harvard.edu/ai/notes/3/)
 4. Learning
 5. Neural Networks
 6. Language

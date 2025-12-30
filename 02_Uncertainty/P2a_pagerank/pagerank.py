@@ -11,6 +11,14 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python pagerank.py corpus")
     corpus = crawl(sys.argv[1])
+    
+    # print(f"corpus0: {corpus}")
+    # corpus0: {
+    # '1.html': {'2.html'}, 
+    # '2.html': {'3.html', '1.html'}, 
+    # '3.html': {'4.html', '2.html'}, 
+    # '4.html': {'2.html'}}
+    
     ranks = sample_pagerank(corpus, DAMPING, SAMPLES)
     print(f"PageRank Results from Sampling (n = {SAMPLES})")
     for page in sorted(ranks):
@@ -21,6 +29,12 @@ def main():
         print(f"  {page}: {ranks[page]:.4f}")
 
 
+# The crawl function takes that directory, 
+# parses all of the HTML files in the directory, 
+# and returns a dictionary representing the corpus. 
+# The keys in that dictionary represent pages (e.g., "2.html"), 
+# and the values of the dictionary are 
+# a set of all of the pages linked to by the key (e.g. {"1.html", "3.html"}).
 def crawl(directory):
     """
     Parse a directory of HTML pages and check for links to other pages.
