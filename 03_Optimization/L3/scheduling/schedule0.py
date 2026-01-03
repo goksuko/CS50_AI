@@ -2,6 +2,8 @@
 Naive backtracking search without any heuristics or inference.
 """
 
+from colorama import init, Fore, Style
+
 VARIABLES = ["A", "B", "C", "D", "E", "F", "G"]
 CONSTRAINTS = [
     ("A", "B"),
@@ -21,19 +23,27 @@ CONSTRAINTS = [
 def backtrack(assignment):
     """Runs backtracking search to find an assignment."""
 
+    print(f"{Fore.GREEN}Assignment: {assignment}")
+    
     # Check if assignment is complete
     if len(assignment) == len(VARIABLES):
         return assignment
 
     # Try a new variable
     var = select_unassigned_variable(assignment)
+    print(f"{Fore.BLUE}== Trying variable {var} ==")
     for value in ["Monday", "Tuesday", "Wednesday"]:
+        print(f"{Fore.RESET}Trying {var} = {value}")
         new_assignment = assignment.copy()
         new_assignment[var] = value
         if consistent(new_assignment):
             result = backtrack(new_assignment)
             if result is not None:
                 return result
+            else:
+                print(f"{Fore.YELLOW}Backtracking from {var} = {value}")
+        else:
+            print(f"{Fore.RED}Conflict detected for {var} = {value}")
     return None
 
 
@@ -62,4 +72,5 @@ def consistent(assignment):
 
 
 solution = backtrack(dict())
-print(solution)
+# print(solution)
+init(autoreset=True)
